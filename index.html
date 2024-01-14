@@ -12,6 +12,9 @@
             <input type="text" placeholder="Enter City name">
             <button><img src="download.png"></button>
         </div>
+        <div class="error">
+            <p>Invalid city name</p>
+        </div>
         <div class="weather">
         <div class="image">
             <img src="images/rain.png"/>
@@ -45,6 +48,10 @@
 
     async function weather(city){
         const response = await fetch(apiurl + city + `&appid=${apikey}`);
+        if(response.status == 404){
+            document.querySelector(".error").style.display = "block";
+            document.querySelector(".weather").style.display = "none";
+        }else{
         var data = await response.json();
         console.log(data);
 
@@ -71,6 +78,8 @@
     }
     
     document.querySelector(".weather").style.display = "block";
+    document.querySelector(".error").style.display = "none";
+}
 }
     btn.addEventListener("click",()=>{
         weather(box.value);

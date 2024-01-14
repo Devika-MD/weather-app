@@ -85,3 +85,10 @@ p{
 .weather{
     display: none;
 }
+.error{
+    text-align: left;
+    margin-left: 50px;
+    font-size: 50px;
+    display: none;
+    padding-bottom: 50px;
+}
